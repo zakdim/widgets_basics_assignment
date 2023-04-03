@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class TextDisplay extends StatelessWidget {
-  final String text;
+class TextOutput extends StatelessWidget {
+  final String textOutput;
 
-  TextDisplay(this.text);
+  TextOutput(this.textOutput);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class TextDisplay extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.all(10),
       child: Text(
-        text,
+        textOutput,
         style: TextStyle(fontSize: 28),
         textAlign: TextAlign.center,
       ),
