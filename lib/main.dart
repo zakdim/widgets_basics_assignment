@@ -13,6 +13,27 @@ class WidgetBasicsApp extends StatefulWidget {
 }
 
 class _WidgetBasicsAppState extends State<WidgetBasicsApp> {
+  final _jokes = const [
+    'Chuck Norris can divide by zero.',
+    'Time waits for no man. Unless that man is Chuck Norris.',
+    'Chuck Norris does not sleep. He waits.',
+    'The chief export of Chuck Norris is pain.',
+    'Chuck Norris can dribble a bowling ball.',
+    'Chuck Norris counted to infinity... twice.',
+    'Chuck Norris makes onions cry.',
+  ];
+  var _jokeIndex = 0;
+
+  void _nextJoke() {
+    setState(() {
+      _jokeIndex = (_jokeIndex + 1) % _jokes.length;
+    });
+    print('Joke index $_jokeIndex');
+    if (_jokeIndex == _jokes.length - 1) {
+      print('Ran out of jokes. Restarting...');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,9 +44,13 @@ class _WidgetBasicsAppState extends State<WidgetBasicsApp> {
         body: Column(
           children: [
             Text(
-              'Hello Flutter World!',
+              _jokes[_jokeIndex],
               style: TextStyle(fontSize: 28),
             ),
+            ElevatedButton(
+              onPressed: _nextJoke,
+              child: Text('Next'),
+            )
           ],
         ),
       ),
