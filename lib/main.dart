@@ -5,6 +5,9 @@
 
 import 'package:flutter/material.dart';
 
+import './text_control.dart';
+import './text_display.dart';
+
 void main() => runApp(WidgetBasicsApp());
 
 class WidgetBasicsApp extends StatefulWidget {
@@ -15,7 +18,7 @@ class WidgetBasicsApp extends StatefulWidget {
 class _WidgetBasicsAppState extends State<WidgetBasicsApp> {
   final _jokes = const [
     'Chuck Norris can divide by zero.',
-    'Time waits for no man. Unless that man is Chuck Norris.',
+    'Chuck Norris can start a fire with an ice cube.',
     'Chuck Norris does not sleep. He waits.',
     'The chief export of Chuck Norris is pain.',
     'Chuck Norris can dribble a bowling ball.',
@@ -28,7 +31,7 @@ class _WidgetBasicsAppState extends State<WidgetBasicsApp> {
     setState(() {
       _jokeIndex = (_jokeIndex + 1) % _jokes.length;
     });
-    print('Joke index $_jokeIndex');
+    print('Next joke index $_jokeIndex');
     if (_jokeIndex == _jokes.length - 1) {
       print('Ran out of jokes. Restarting...');
     }
@@ -43,14 +46,8 @@ class _WidgetBasicsAppState extends State<WidgetBasicsApp> {
         ),
         body: Column(
           children: [
-            Text(
-              _jokes[_jokeIndex],
-              style: TextStyle(fontSize: 28),
-            ),
-            ElevatedButton(
-              onPressed: _nextJoke,
-              child: Text('Next'),
-            )
+            TextDisplay(_jokes[_jokeIndex]),
+            TextControl(_nextJoke),
           ],
         ),
       ),
